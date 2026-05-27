@@ -330,6 +330,31 @@ return {
             ignored = false,
           },
           explorer = {
+            actions = {
+              copy_abs_path = function(picker)
+                local item = picker:current()
+                if item then
+                  vim.fn.setreg("+", item.file)
+                  vim.notify("已复制绝对路径: " .. item.file)
+                end
+              end,
+              copy_rel_path = function(picker)
+                local item = picker:current()
+                if item then
+                  local rel = vim.fn.fnamemodify(item.file, ":.")
+                  vim.fn.setreg("+", rel)
+                  vim.notify("已复制相对路径: " .. rel)
+                end
+              end,
+            },
+            win = {
+              list = {
+                keys = {
+                  ["<leader>yp"] = { "copy_rel_path", desc = "复制相对路径" },
+                  ["<leader>yP"] = { "copy_abs_path", desc = "复制绝对路径" },
+                },
+              },
+            },
             hidden = true,
             ignored = true,
             exclude = { ".DS_Store" },
