@@ -1,0 +1,19 @@
+{
+  "reactInit": {
+    "prefix": "rcomp",
+    "body": [
+      "import React from 'react';",
+      "",
+      "export function ${1:ComponentName}({ children, className = '', ...props }) {",
+      "  return (",
+      "    <div className={`${className} ${2:component-class}`} {...props}>",
+      "      {children}",
+      "    </div>",
+      "  );",
+      "}",
+      "",
+      "export default ${1:ComponentName};"
+    ],
+    "description": "Create a reusable React component with className and children"
+  }
+}

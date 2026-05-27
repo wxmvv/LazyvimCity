@@ -1,0 +1,33 @@
+{
+	"META": {
+		"prefix": "meta",
+		"body": [
+			"---",
+			"title: ${CURRENT_YEAR}${CURRENT_MONTH}${CURRENT_DATE} ${1:标题}",
+			"date: ${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}",
+			"lastmod: ${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}",
+			"update: ${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}",
+			"type: Blog",
+			"tags:",
+			"  - code",
+			"categories:",
+			"  - code",
+			"summary: null",
+			"comments: true",
+			"media: null",
+			"authors:",
+			"  - default",
+			"draft: true",
+			"onhomepage: false",
+			"---"
+		]
+	},
+	"CODE": {
+		"prefix": "code",
+		"body": ["```${code}", "${code2}", "```"]
+	},
+	"work_record": {
+		"prefix": "work_record",
+		"body": ["", "### $1", "", "今日工作:", "", "- $2", "", "工作详情:", "", "- $3", ""]
+	}
+}

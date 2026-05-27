@@ -1,0 +1,43 @@
+{
+	"vueinit": {
+		"prefix": "vue3init",
+		"body": [
+			"<script setup>",
+			"import { ref } from 'vue'",
+			"const $1 = ref('')",
+			"</script>",
+			"",
+			"<template>",
+			"    <div>",
+			"        $2",
+			"    </div>",
+			"</template>",
+			"",
+			"<style scoped>",
+			"$3",
+			"</style>"
+		],
+		"description": "Vue3 init"
+	},
+
+	"vue base css": {
+		"prefix": "vbase",
+		"body": [
+			"<script lang='ts' setup>",
+			"import { ref } from 'vue'",
+			"const $1 = ref('')",
+			"</script>",
+			"",
+			"<template>",
+			"    <div>",
+			"        $2",
+			"    </div>",
+			"</template>",
+			"",
+			"<style lang='css' scoped>",
+			"$3",
+			"</style>"
+		],
+		"description": "Vue3 init"
+	}
+}

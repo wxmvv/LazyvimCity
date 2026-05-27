@@ -1,0 +1,17 @@
+{
+	"console.log": {
+		"prefix": "log",
+		"body": ["console.log('$1');", "$2"],
+		"description": "Log output to console"
+	},
+	"function": {
+		"prefix": "fn",
+		"body": ["function $1($2:$3):$4 {", "$5", "}"],
+		"description": "Create a function"
+	},
+	"function arrow": {
+		"prefix": "afn",
+		"body": ["const $1 = ($2:$3):$4 => {", "$5", "};"],
+		"description": "Create a function"
+	}
+}
