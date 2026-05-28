@@ -13,6 +13,14 @@ return {
   { "rafamadriz/friendly-snippets", enabled = false },
   { "catppuccin/nvim", enabled = false },
   { "MeanderingProgrammer/render-markdown.nvim", enabled = false },
+  {
+    "folke/noice.nvim",
+    opts = {
+      cmdline = {
+        view = "cmdline",
+      },
+    },
+  },
 
   -- statusbar
   {
@@ -20,8 +28,8 @@ return {
     opts = function(_, opts)
       opts.sections.lualine_z = {}
       opts.sections.lualine_y = {
-        { "progress", separator = " ", padding = { left = 0, right = 0 } },
-        { "location", padding = { left = 0, right = 0 } },
+        { "progress", separator = " ", padding = { left = 1, right = 0 } },
+        { "location", padding = { left = 0, right = 1 } },
       }
       opts.sections.lualine_c = {
         LazyVim.lualine.pretty_path(),
@@ -57,6 +65,8 @@ return {
       }
       opts.winbar = { lualine_c = { component } }
       opts.inactive_winbar = { lualine_c = { component } }
+      opts.options.section_separators = ""
+      opts.options.component_separators = ""
     end,
   },
 
@@ -278,7 +288,6 @@ return {
         show_buffer_close_icons = false,
         show_close_icon = false,
         show_buffer_icons = false,
-        -- separator_style = "slant",
         separator_style = { "", "" },
         indicator = { style = "none" },
         tab_size = 0,
@@ -307,6 +316,9 @@ return {
   {
     "snacks.nvim",
     opts = {
+      notifier = {
+        width = { min = 40, max = 0.8 },
+      },
       dashboard = {
         preset = {
           -- https://github.com/nvimdev/dashboard-nvim/wiki/Ascii-Header-Text
