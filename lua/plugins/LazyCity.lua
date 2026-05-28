@@ -117,6 +117,7 @@ return {
     "neovim/nvim-lspconfig",
     ---@class PluginLspOpts
     opts = {
+      inlay_hints = { enabled = false },
       diagnostics = {
         underline = true,
         update_in_insert = false,
