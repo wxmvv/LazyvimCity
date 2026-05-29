@@ -42,7 +42,6 @@ return {
             hint = LazyVim.config.icons.diagnostics.Hint,
           },
         },
-        -- { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
       }
       opts.sections.lualine_b = {} -- branch
 

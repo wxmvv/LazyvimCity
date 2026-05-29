@@ -396,6 +396,9 @@ return {
       hl.lualine_c_normal = { bg = "none" }
       hl.lualine_c_inactive = { bg = "none" }
 
+      -- hl.lualine_a_normal = { bg = c.dark_gray }
+      -- hl.lualine_b_normal = { bg = c.dark_gray }
+
       hl.MyWinbar = { fg = c.fg, bg = "none", italic = true }
       hl.TroubleIconFunction = { fg = c.blue, bg = "none" }
       hl.TroubleIconClass = { fg = c.cyan, bg = "none" }
