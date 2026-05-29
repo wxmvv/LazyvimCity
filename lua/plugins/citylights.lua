@@ -389,15 +389,11 @@ return {
       hl.TabLine = { bg = "none" }
       hl.TabLineFill = { bg = "none" }
       hl.StatusLine = { bg = "none" }
-      -- hl.WinBar = { bg = c.very_dark_gray }
       hl.WinBar = { bg = c.dark_gray }
       hl.WinBarNC = { bg = "none" }
 
       hl.lualine_c_normal = { bg = "none" }
       hl.lualine_c_inactive = { bg = "none" }
-
-      -- hl.lualine_a_normal = { bg = c.dark_gray }
-      -- hl.lualine_b_normal = { bg = c.dark_gray }
 
       hl.MyWinbar = { fg = c.fg, bg = "none", italic = true }
       hl.TroubleIconFunction = { fg = c.blue, bg = "none" }
@@ -408,8 +404,6 @@ return {
       hl.TroubleNormalNC = { bg = "none" }
       hl.TroubleCount = { fg = c.cyan, bg = "none" }
 
-      -- hl.TroubleStatusline0 = { bg = "none" }
-      -- hl.TroubleStatusline1 = { bg = "none" }
     end,
   },
 }

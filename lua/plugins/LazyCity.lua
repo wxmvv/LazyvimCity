@@ -13,6 +13,8 @@ return {
   { "rafamadriz/friendly-snippets", enabled = false },
   { "catppuccin/nvim", enabled = false },
   { "MeanderingProgrammer/render-markdown.nvim", enabled = false },
+
+  -- noice
   {
     "folke/noice.nvim",
     opts = {
