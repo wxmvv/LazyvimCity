@@ -9,6 +9,7 @@ vim.g.autoformat = false -- format on save
 
 local opt = vim.opt
 
+-- vim.opt.scrolloff = 0
 
 opt.signcolumn = "auto"
 opt.foldcolumn = "0"

@@ -368,16 +368,15 @@ return {
       hl.BufferLineModifiedVisible = { fg = c.green, bg = "none" }
 
       -- current buffer
-      hl.BufferLineBufferSelected = { fg = c.fg, bg = c.very_dark_gray, bold = true, italic = true }
-      hl.BufferLineNumbersSelected = { fg = c.fg, bg = c.very_dark_gray }
-      hl.BufferLineCloseButtonSelected = { fg = c.red, bg = c.very_dark_gray }
-      hl.BufferLineModifiedSelected = { fg = c.green, bg = c.very_dark_gray }
-
+      hl.BufferLineBufferSelected = { fg = c.fg, bg = c.dark_gray, bold = true, italic = true }
+      hl.BufferLineNumbersSelected = { fg = c.fg, bg = c.dark_gray }
+      hl.BufferLineCloseButtonSelected = { fg = c.red, bg = c.dark_gray }
+      hl.BufferLineModifiedSelected = { fg = c.green, bg = c.dark_gray }
       -- thin 细线分隔符
-      hl.BufferLineSeparator = { fg = c.very_dark_gray, bg = "none" }
-      hl.BufferLineSeparatorVisible = { bg = c.very_dark_gray }
-      hl.BufferLineSeparatorSelected = { bg = c.very_dark_gray }
-      hl.BufferLineIndicatorSelected = { bg = c.very_dark_gray }
+      hl.BufferLineSeparator = { fg = c.dark_gray, bg = "none" }
+      hl.BufferLineSeparatorVisible = { bg = c.dark_gray }
+      hl.BufferLineSeparatorSelected = { bg = c.dark_gray }
+      hl.BufferLineIndicatorSelected = { bg = c.dark_gray }
 
       -- 右侧 tab 页指示器(1 / 2)
       hl.BufferLineTab = { fg = c.comment, bg = "none" }
@@ -391,7 +390,7 @@ return {
       hl.TabLineFill = { bg = "none" }
       hl.StatusLine = { bg = "none" }
       -- hl.WinBar = { bg = c.very_dark_gray }
-      hl.WinBar = { bg = c.bg }
+      hl.WinBar = { bg = c.dark_gray }
       hl.WinBarNC = { bg = "none" }
 
       hl.lualine_c_normal = { bg = "none" }

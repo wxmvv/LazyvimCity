@@ -316,6 +316,9 @@ return {
   {
     "snacks.nvim",
     opts = {
+      scroll = {
+        enabled = false,
+      },
       notifier = {
         width = { min = 40, max = 0.8 },
       },
