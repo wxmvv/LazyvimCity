@@ -14,6 +14,16 @@ return {
   { "catppuccin/nvim", enabled = false },
   { "MeanderingProgrammer/render-markdown.nvim", enabled = false },
 
+  {
+    "lewis6991/gitsigns.nvim",
+    opts = {
+      signs_staged_enable = true,
+      sign_priority = 6,
+      numhl = true,
+      linehl = false,
+      word_diff = false,
+    },
+  },
   -- noice
   {
     "folke/noice.nvim",

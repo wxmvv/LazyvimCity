@@ -9,9 +9,9 @@ vim.g.autoformat = false -- format on save
 
 local opt = vim.opt
 
--- vim.opt.scrolloff = 0
+vim.opt.scrolloff = 0
 
-opt.signcolumn = "auto"
+opt.signcolumn = "no"
 opt.foldcolumn = "0"
 opt.numberwidth = 2
 opt.statuscolumn = ""
@@ -40,7 +40,6 @@ opt.smartcase = true
 
 -- tokeynigth
 opt.termguicolors = true
-opt.signcolumn = "yes"
 opt.background = "dark"
 
 -- backspace
