@@ -387,7 +387,7 @@ return {
             ignored = true,
             exclude = { ".DS_Store" },
             layout = {
-              preset = "bottom",
+              preset = "top",
               preview = true,
               auto_hide = {},
             },
