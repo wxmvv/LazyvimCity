@@ -22,3 +22,6 @@ map("n", "<leader>yl", function()
   vim.fn.setreg("+", vim.fn.expand("%:p") .. ":" .. vim.fn.line("."))
   vim.notify("已复制路径+行号")
 end, { desc = "Copy path with line number" })
+
+vim.keymap.del("n", "<C-w><C-d>")
+vim.keymap.set("n", "<C-w>D", vim.diagnostic.open_float, { desc = "Show diagnostics under cursor" })
