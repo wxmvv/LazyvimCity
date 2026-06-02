@@ -346,6 +346,55 @@ return {
       },
       -- https://github.com/folke/snacks.nvim/blob/main/docs/picker.md#explorer
       picker = {
+        actions = {
+          open_with_system = function(picker, item)
+            if not item then
+              return
+            end
+            local path = item.file or item.text
+            if path then
+              vim.ui.open(path)
+            end
+          end,
+          reveal_in_finder = function(picker, item)
+            if not item then
+              return
+            end
+            local path = item.file or item.text
+            if not path then
+              return
+            end
+            if vim.fn.has("mac") == 1 then
+              -- macOS: open -R 会在 Finder 中高亮选中该文件
+              vim.fn.jobstart({ "open", "-R", path }, { detach = true })
+            elseif vim.fn.executable("explorer.exe") == 1 then
+              -- WSL / Windows: /select, 参数高亮文件
+              local win_path = vim.fn.system("wslpath -w " .. vim.fn.shellescape(path)):gsub("\n", "")
+              vim.fn.jobstart({ "explorer.exe", "/select,", win_path }, { detach = true })
+            elseif vim.fn.executable("nautilus") == 1 then
+              vim.fn.jobstart({ "nautilus", "--select", path }, { detach = true })
+            elseif vim.fn.executable("dolphin") == 1 then
+              vim.fn.jobstart({ "dolphin", "--select", path }, { detach = true })
+            elseif vim.fn.executable("thunar") == 1 then
+              -- Thunar 不支持 --select，只能打开所在目录
+              vim.fn.jobstart({ "thunar", vim.fn.fnamemodify(path, ":h") }, { detach = true })
+            else
+              vim.notify("No supported file manager found", vim.log.levels.WARN)
+            end
+          end,
+        },
+        win = {
+          input = {
+            keys = {
+              ["gx"] = { "open_with_system", mode = { "n", "i" } },
+              ["gX"] = { "reveal_in_finder", mode = { "n", "i" } },
+              ["gr"] = { "reveal_in_finder", mode = { "n", "i" } },
+            },
+          },
+          list = {
+            keys = { ["gx"] = "open_with_system", ["gX"] = "reveal_in_finder", ["gr"] = "reveal_in_finder" },
+          },
+        },
         sources = {
           smart = {
             exclude = { "node_modules", ".git", ".DS_Store" },
