@@ -323,6 +323,8 @@ return {
     end,
   },
 
+  -- todo-comments
+
   -- snacks explorer
   {
     "snacks.nvim",
