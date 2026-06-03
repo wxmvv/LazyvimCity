@@ -135,6 +135,9 @@ return {
       hl.TelescopeSelection = { bg = "#28313a" }
       hl["@lsp.typemod.property.declaration.vue"] = { fg = c.very_light_gray }
       hl["@lsp.typemod.variable.declaration.vue"] = { fg = c.very_light_gray }
+      hl.LspReferenceRead = { underline = true, bg = "none" }
+      -- hl.LspReferenceWrite = { bg = c.very_dark_gray }
+      -- hl.LspReferenceText = { bg = c.very_dark_gray }
       hl["@lsp.type.variable.vue"] = { fg = c.light_gray }
       hl["@lsp.mod.readonly.vue"] = { fg = c.light_gray }
       hl["@constant.builtin.typescript"] = { fg = c.red }
@@ -391,4 +394,18 @@ return {
       hl.TroubleCount = { fg = c.cyan, bg = "none" }
     end,
   },
+  config = function(_, opts)
+    -- 应用初始配置
+    require("tokyonight").setup(opts)
+    vim.cmd("colorscheme tokyonight")
+
+    -- 切换透明的函数
+    local transparent = opts.transparent
+    vim.keymap.set("n", "<leader>ut", function()
+      transparent = not transparent
+      require("tokyonight").setup(vim.tbl_extend("force", opts, { transparent = transparent }))
+      vim.cmd("colorscheme tokyonight")
+      vim.notify("透明模式: " .. (transparent and "开" or "关"), vim.log.levels.INFO)
+    end, { desc = "Toggle Transparency" })
+  end,
 }
