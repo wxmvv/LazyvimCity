@@ -135,7 +135,7 @@ return {
     "saghen/blink.cmp",
     opts = function(_, opts)
       opts.sources.default = { "lsp", "snippets", "path" }
-      opts.sources.per_filetype.markdown = { "lsp", "path", "snippets" }
+      -- opts.sources.per_filetype.markdown = { "lsp", "path", "snippets" }
 
       opts.completion = opts.completion or {}
       opts.completion.menu = opts.completion.menu or {}
