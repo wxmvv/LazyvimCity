@@ -164,8 +164,16 @@ return {
         severity_sort = true,
       },
       servers = {
-        pyright = {},
-        eslint = {},
+        -- pyright = {},
+        eslint = {
+          filetypes = {
+            "javascript",
+            "javascriptreact",
+            "typescript",
+            "typescriptreact",
+            "vue",
+          },
+        },
         cssls = {
           filetypes = { "css", "scss", "less" },
           settings = {
@@ -190,7 +198,8 @@ return {
         --   filetypes = { "scss", "sass", "vue" },
         -- },
         tailwindcss = {
-          filetypes = { "html", "css", "scss", "vue", "javascript", "typescript", "javascriptreact", "typescriptreact" },
+          -- filetypes = { "html", "css", "scss", "vue", "javascript", "typescript", "javascriptreact", "typescriptreact" },
+          filetypes = { "javascriptreact", "typescriptreact" },
           settings = {
             tailwindCSS = {
               experimental = {
