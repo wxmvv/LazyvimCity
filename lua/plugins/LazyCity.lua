@@ -167,7 +167,7 @@ return {
         pyright = {},
         eslint = {},
         cssls = {
-          filetypes = { "css", "scss", "less", "vue" },
+          filetypes = { "css", "scss", "less" },
           settings = {
             css = {
               lint = {
