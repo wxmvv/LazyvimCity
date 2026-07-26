@@ -113,7 +113,7 @@ return {
         typescriptreact = { "prettier" },
         json = { "prettier" },
         json5 = { "prettier" },
-        jsonc = { "prettier" },
+        -- jsonc = { "prettier" },
         yaml = { "prettier" },
         mdx = { "prettier" },
         css = { "prettier" },
@@ -234,7 +234,7 @@ return {
         "tsx", -- React/TSX
         "vue", -- Vue
         "json",
-        "jsonc",
+        -- "jsonc",
         "json5",
         "yaml",
         "markdown",
