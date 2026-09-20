@@ -1,6 +1,6 @@
 let g:polyglot_disabled = ['vue']
 call plug#begin()
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'preservim/nerdtree'
 Plug 'junegunn/fzf', {'do':{-> fzf#install()}}
 Plug 'junegunn/fzf.vim'
@@ -9,7 +9,7 @@ Plug 'wxmvv/citylights.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'mg979/vim-visual-multi', {'branch':'master'}
 Plug 'kshenoy/vim-signature'
-Plug 'Exafunction/codeium.vim'
+" Plug 'Exafunction/codeium.vim'
 Plug 'machakann/vim-highlightedyank'
 Plug 'airblade/vim-gitgutter'
 Plug 'sheerun/vim-polyglot'
@@ -87,62 +87,30 @@ autocmd FileType vue syntax sync minlines=50 maxlines=200
 
 
 " =============================================================================
-" coc.nvim  (补全 / LSP / 诊断 — 替代 blink.cmp + lspconfig + mason)
+" coc.nvim 配置已停用
 " =============================================================================
-" 对应 mason ensure_installed 的语言服务, 首次启动 coc 会自动安装
-let g:coc_global_extensions = [
-      \ 'coc-pyright',
-      \ 'coc-tsserver',
-      \ 'coc-eslint',
-      \ 'coc-prettier',
-      \ 'coc-css',
-      \ 'coc-html',
-      \ 'coc-json',
-      \ 'coc-yaml',
-      \ 'coc-tailwindcss',
-      \ '@yaegassy/coc-volar',
-      \ ]
-
-function! CheckBackspace() abort
- let col = col('.') - 1
- return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Tab / Shift-Tab 在补全菜单里选择
-inoremap <silent><expr> <TAB>
-      \ coc#pum#visible() ? coc#pum#next(1) :
-      \ CheckBackspace() ? "\<Tab>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
-
-" 回车确认补全 (auto-pairs 兼容)
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-      \ : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
-" 手动触发补全 (对应 blink 的 <A-Space>)
-inoremap <silent><expr> <A-Space> coc#refresh()
-
-" 跳转 (LSP)
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-nmap <silent> [d <Plug>(coc-diagnostic-prev)
-nmap <silent> ]d <Plug>(coc-diagnostic-next)
-
-" 悬浮文档 (K)
-nnoremap <silent> K :call CocActionAsync('doHover')<CR>
-
-" 重命名 / code action
-nmap <leader>cr <Plug>(coc-rename)
-nmap <leader>ca <Plug>(coc-codeaction-cursor)
-
-" 格式化 (替代 conform.nvim; g:autoformat=false -> 不保存时自动格式化)
-command! -nargs=0 Format :call CocActionAsync('format')
-nnoremap <leader>cf :Format<CR>
-
-" 诊断列表 (替代 trouble.nvim)
-nnoremap <silent> <leader>xx :<C-u>CocList diagnostics<CR>
+" 原配置保留为注释，避免未安装 coc.nvim 时产生无效映射和命令。
+" let g:coc_global_extensions = [...]
+" function! CheckBackspace() abort
+"   let col = col('.') - 1
+"   return !col || getline('.')[col - 1] =~# '\s'
+" endfunction
+" inoremap <silent><expr> <TAB> coc#pum#visible() ? coc#pum#next(1) : CheckBackspace() ? "\<Tab>" : coc#refresh()
+" inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+" inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+" inoremap <silent><expr> <A-Space> coc#refresh()
+" nmap <silent> gd <Plug>(coc-definition)
+" nmap <silent> gy <Plug>(coc-type-definition)
+" nmap <silent> gi <Plug>(coc-implementation)
+" nmap <silent> gr <Plug>(coc-references)
+" nmap <silent> [d <Plug>(coc-diagnostic-prev)
+" nmap <silent> ]d <Plug>(coc-diagnostic-next)
+" nnoremap <silent> K :call CocActionAsync('doHover')<CR>
+" nmap <leader>cr <Plug>(coc-rename)
+" nmap <leader>ca <Plug>(coc-codeaction-cursor)
+" command! -nargs=0 Format :call CocActionAsync('format')
+" nnoremap <leader>cf :Format<CR>
+" nnoremap <silent> <leader>xx :<C-u>CocList diagnostics<CR>
 
 
 " =============================================================================
@@ -158,18 +126,15 @@ autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTa
 
 
 " =============================================================================
-" vim-startify  (替代 snacks.dashboard)
+" vim-startify 配置已停用（插件未安装）
 " =============================================================================
-let g:startify_custom_header = [
-      \ '   C I T Y   L I G H T S',
-      \ ]
-let g:startify_lists = [
-      \ { 'type': 'files',     'header': ['   最近文件'] },
-      \ { 'type': 'dir',       'header': ['   当前目录'] },
-      \ { 'type': 'bookmarks', 'header': ['   书签'] },
-      \ ]
-" 对应 options.lua 里的 :Home 命令
-command! Home Startify
+" let g:startify_custom_header = ['   C I T Y   L I G H T S']
+" let g:startify_lists = [
+"       \ { 'type': 'files',     'header': ['   最近文件'] },
+"       \ { 'type': 'dir',       'header': ['   当前目录'] },
+"       \ { 'type': 'bookmarks', 'header': ['   书签'] },
+"       \ ]
+" command! Home Startify
 
 
 " =============================================================================
@@ -223,21 +188,18 @@ nnoremap <leader>bd :bdelete<CR>
 
 
 " =============================================================================
-" Codeium  (替代 neocodeium, 键位照搬你的 LazyCity.lua)
-" 首次使用先运行 :Codeium Auth 登录
+" Codeium 配置已停用
 " =============================================================================
-let g:codeium_disable_bindings = 1
-let g:codeium_manual = v:true              " 对应 neocodeium manual = true
-let g:codeium_filetypes = {
-      \ 'TelescopePrompt': v:false,
-      \ }
-imap <silent> <M-Bslash> <Cmd>call codeium#CycleOrComplete()<CR>
-imap <silent> <M-f>      <Cmd>call codeium#Accept()<CR>
-imap <silent> <M-w>      <Cmd>call codeium#AcceptNextWord()<CR>
-imap <silent> <M-l>      <Cmd>call codeium#AcceptNextLine()<CR>
-imap <silent> <M-]>      <Cmd>call codeium#CycleCompletions(1)<CR>
-imap <silent> <M-[>      <Cmd>call codeium#CycleCompletions(-1)<CR>
-imap <silent> <C-]>      <Cmd>call codeium#Clear()<CR>
+" let g:codeium_disable_bindings = 1
+" let g:codeium_manual = v:true
+" let g:codeium_filetypes = {'TelescopePrompt': v:false}
+" imap <silent> <M-Bslash> <Cmd>call codeium#CycleOrComplete()<CR>
+" imap <silent> <M-f>      <Cmd>call codeium#Accept()<CR>
+" imap <silent> <M-w>      <Cmd>call codeium#AcceptNextWord()<CR>
+" imap <silent> <M-l>      <Cmd>call codeium#AcceptNextLine()<CR>
+" imap <silent> <M-]>      <Cmd>call codeium#CycleCompletions(1)<CR>
+" imap <silent> <M-[>      <Cmd>call codeium#CycleCompletions(-1)<CR>
+" imap <silent> <C-]>      <Cmd>call codeium#Clear()<CR>
 
 
 " =============================================================================
@@ -269,4 +231,3 @@ if has('patch-8.0.1394') || has('nvim')
           \ endif
   augroup END
 endif
-
