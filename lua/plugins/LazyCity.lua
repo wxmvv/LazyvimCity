@@ -249,73 +249,73 @@ return {
       },
     },
   },
-  {
-    "monkoose/neocodeium",
-    enabled = true,
-    event = "VeryLazy",
-    config = function()
-      local neocodeium = require("neocodeium")
-      neocodeium.setup({
-        manual = true,
-        silent = true,
-        show_label = true,
-        debounce = false,
-        filetypes = {
-          TelescopePrompt = false,
-          ["dap-repl"] = false,
-        },
-      })
-      local opts = { silent = true }
-
-      local function accept_and_continue(fn)
-        return function()
-          fn()
-          vim.schedule(function()
-            if vim.fn.mode():sub(1, 1) ~= "i" then
-              return
-            end
-            local ok, visible = pcall(neocodeium.visible)
-            if not ok or not visible then
-              pcall(neocodeium.cycle_or_complete)
-            end
-          end)
-        end
-      end
-
-      vim.keymap.set("i", "<M-\\>", function()
-        neocodeium.cycle_or_complete()
-      end, vim.tbl_extend("force", opts, { desc = "Codeium: trigger" }))
-
-      vim.keymap.set("i", "<M-f>", function()
-        neocodeium.accept()
-      end, vim.tbl_extend("force", opts, { desc = "Codeium: accept all" }))
-
-      vim.keymap.set(
-        "i",
-        "<M-w>",
-        accept_and_continue(neocodeium.accept_word),
-        vim.tbl_extend("force", opts, { desc = "Codeium: accept word" })
-      )
-
-      vim.keymap.set(
-        "i",
-        "<M-l>",
-        accept_and_continue(neocodeium.accept_line),
-        vim.tbl_extend("force", opts, { desc = "Codeium: accept line" })
-      )
-
-      vim.keymap.set("i", "<M-]>", function()
-        neocodeium.cycle_or_complete(1)
-      end, vim.tbl_extend("force", opts, { desc = "Codeium: next" }))
-      vim.keymap.set("i", "<M-[>", function()
-        neocodeium.cycle_or_complete(-1)
-      end, vim.tbl_extend("force", opts, { desc = "Codeium: prev" }))
-      vim.keymap.set("i", "<C-]>", function()
-        neocodeium.clear()
-      end, vim.tbl_extend("force", opts, { desc = "Codeium: dismiss" }))
-    end,
-  },
-
+  -- {
+  --   "monkoose/neocodeium",
+  --   enabled = true,
+  --   event = "VeryLazy",
+  --   config = function()
+  --     local neocodeium = require("neocodeium")
+  --     neocodeium.setup({
+  --       manual = true,
+  --       silent = true,
+  --       show_label = true,
+  --       debounce = false,
+  --       filetypes = {
+  --         TelescopePrompt = false,
+  --         ["dap-repl"] = false,
+  --       },
+  --     })
+  --     local opts = { silent = true }
+  --
+  --     local function accept_and_continue(fn)
+  --       return function()
+  --         fn()
+  --         vim.schedule(function()
+  --           if vim.fn.mode():sub(1, 1) ~= "i" then
+  --             return
+  --           end
+  --           local ok, visible = pcall(neocodeium.visible)
+  --           if not ok or not visible then
+  --             pcall(neocodeium.cycle_or_complete)
+  --           end
+  --         end)
+  --       end
+  --     end
+  --
+  --     vim.keymap.set("i", "<M-\\>", function()
+  --       neocodeium.cycle_or_complete()
+  --     end, vim.tbl_extend("force", opts, { desc = "Codeium: trigger" }))
+  --
+  --     vim.keymap.set("i", "<M-f>", function()
+  --       neocodeium.accept()
+  --     end, vim.tbl_extend("force", opts, { desc = "Codeium: accept all" }))
+  --
+  --     vim.keymap.set(
+  --       "i",
+  --       "<M-w>",
+  --       accept_and_continue(neocodeium.accept_word),
+  --       vim.tbl_extend("force", opts, { desc = "Codeium: accept word" })
+  --     )
+  --
+  --     vim.keymap.set(
+  --       "i",
+  --       "<M-l>",
+  --       accept_and_continue(neocodeium.accept_line),
+  --       vim.tbl_extend("force", opts, { desc = "Codeium: accept line" })
+  --     )
+  --
+  --     vim.keymap.set("i", "<M-]>", function()
+  --       neocodeium.cycle_or_complete(1)
+  --     end, vim.tbl_extend("force", opts, { desc = "Codeium: next" }))
+  --     vim.keymap.set("i", "<M-[>", function()
+  --       neocodeium.cycle_or_complete(-1)
+  --     end, vim.tbl_extend("force", opts, { desc = "Codeium: prev" }))
+  --     vim.keymap.set("i", "<C-]>", function()
+  --       neocodeium.clear()
+  --     end, vim.tbl_extend("force", opts, { desc = "Codeium: dismiss" }))
+  --   end,
+  -- },
+  --
   -- bufferline tabbar
   {
     "akinsho/bufferline.nvim",
