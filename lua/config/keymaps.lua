@@ -5,6 +5,15 @@
 
 local map = vim.keymap.set
 
+-- 打开/隐藏项目终端（兼容 Ctrl+/ 的传统终端编码）
+-- local function toggle_terminal()
+--   Snacks.terminal.focus(nil, { cwd = LazyVim.root() })
+-- end
+--
+-- for _, key in ipairs({ "<C-/>", "<C-_>", "<C-`>" }) do
+--   map({ "n", "i", "t" }, key, toggle_terminal, { desc = "Terminal (Root Dir)" })
+-- end
+
 -- 复制相对路径
 map("n", "<leader>yp", function()
   vim.fn.setreg("+", vim.fn.expand("%:."))
