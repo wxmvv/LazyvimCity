@@ -5,6 +5,7 @@
 vim.g.mapleader = " "
 vim.g.snacks_animate = true
 vim.g.autoformat = false -- format on save
+vim.g.ai_cmp = false -- Use manual AI inline suggestions instead of Blink's completion menu.
 -- vim.g.trouble_lualine = false
 
 local opt = vim.opt

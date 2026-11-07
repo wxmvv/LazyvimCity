@@ -242,6 +242,7 @@ return {
       hl["@markup.heading.4.markdown"] = { bg = "#152026", bold = true, fg = c.color1dark }
       hl["@markup.heading.5.markdown"] = { bg = "#201520", bold = true, fg = c.color2light }
       hl["@markup.heading.6.markdown"] = { bg = "#1E1520", bold = true, fg = c.color2medium }
+      hl["@markup.raw.markdown_inline"] = { bold = true, fg = c.gray }
 
       -- -- ── Editor UI ──────────────────────────────────────────────────────────
       -- -- Normal

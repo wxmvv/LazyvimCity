@@ -135,6 +135,15 @@ return {
     "saghen/blink.cmp",
     opts = function(_, opts)
       opts.sources.default = { "lsp", "snippets", "path" }
+      opts.sources.providers = opts.sources.providers or {}
+      opts.sources.providers.snippets = vim.tbl_deep_extend("force", opts.sources.providers.snippets or {}, {
+        opts = {
+          extended_filetypes = {
+            javascriptreact = { "javascript" },
+            typescriptreact = { "typescript", "javascriptreact" },
+          },
+        },
+      })
       -- opts.sources.per_filetype.markdown = { "lsp", "path", "snippets" }
 
       opts.completion = opts.completion or {}
@@ -198,8 +207,9 @@ return {
         --   filetypes = { "scss", "sass", "vue" },
         -- },
         tailwindcss = {
-          -- filetypes = { "html", "css", "scss", "vue", "javascript", "typescript", "javascriptreact", "typescriptreact" },
-          filetypes = { "javascriptreact", "typescriptreact" },
+          -- Keep LazyVim's broad filetype support, but only start in Tailwind projects.
+          root_dir = require("config.tailwind").root_dir,
+          workspace_required = true,
           settings = {
             tailwindCSS = {
               experimental = {

@@ -6,7 +6,7 @@
       "",
       "export function ${1:ComponentName}({ children, className = '', ...props }) {",
       "  return (",
-      "    <div className={`${className} ${2:component-class}`} {...props}>",
+      "    <div className={`\\${className} ${2:component-class}`} {...props}>",
       "      {children}",
       "    </div>",
       "  );",
