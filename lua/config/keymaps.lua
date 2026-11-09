@@ -5,6 +5,10 @@
 
 local map = vim.keymap.set
 
+-- 覆盖 LazyVim 的窗口高度调整映射，交给 vim-visual-multi 添加光标。
+map("n", "<C-Down>", "<Plug>(VM-Add-Cursor-Down)", { remap = true, desc = "Add Cursor Down" })
+map("n", "<C-Up>", "<Plug>(VM-Add-Cursor-Up)", { remap = true, desc = "Add Cursor Up" })
+
 -- 打开/隐藏项目终端（兼容 Ctrl+/ 的传统终端编码）
 -- local function toggle_terminal()
 --   Snacks.terminal.focus(nil, { cwd = LazyVim.root() })
