@@ -19,7 +19,7 @@ opt.statuscolumn = ""
 
 opt.mouse = ""
 
-opt.cursorline = true
+opt.cursorline = false
 
 opt.spell = false
 opt.spelllang = {}
