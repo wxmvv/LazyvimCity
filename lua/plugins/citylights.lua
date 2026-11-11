@@ -103,7 +103,7 @@ return {
       c.warning = c.yellow
       c.info = c.color1medium
       c.hint = c.color1medium
-      c.todo = c.yellow
+      c.todo = c.blue
       -- Blue-family aliases
       c.blue0 = c.color2dark -- #539AFC
       c.blue1 = c.color1medium -- #33CED8
@@ -130,18 +130,21 @@ return {
 
     on_highlights = function(hl, c)
       hl.Comment = { fg = c.comment, italic = true } -- comment
+      hl.CursorLineNr = { fg = "#5ec4ff", bold = true }
       hl.NormalFloat = { bg = c.bg_dark } -- popup
       hl.TelescopeBorder = { fg = "#34424d" } -- Telescope
       hl.TelescopeSelection = { bg = "#28313a" }
+      hl["@keyword"] = { fg = c.magenta, italic = true } -- 关键字
       hl["@lsp.typemod.property.declaration.vue"] = { fg = c.very_light_gray }
       hl["@lsp.typemod.variable.declaration.vue"] = { fg = c.very_light_gray }
-      hl.LspReferenceRead = { underline = true, bg = "none" }
-      -- hl.LspReferenceWrite = { bg = c.very_dark_gray }
-      -- hl.LspReferenceText = { bg = c.very_dark_gray }
       hl["@lsp.type.variable.vue"] = { fg = c.light_gray }
       hl["@lsp.mod.readonly.vue"] = { fg = c.light_gray }
       hl["@constant.builtin.typescript"] = { fg = c.red }
       hl["@property.css"] = { fg = c.very_light_gray }
+      hl["@variable"] = { fg = c.light_gray }
+      hl["@variable.member"] = { fg = c.light_gray }
+      hl["@variable.parameter"] = { fg = c.yellow }
+      hl["@variable.builtin"] = { fg = c.red }
 
       -- ── Functions ──────────────────────────────────────────────────────────
       hl.Function = { fg = c.color1light }
@@ -173,7 +176,6 @@ return {
 
       -- -- ── Keywords ───────────────────────────────────────────────────────────
       -- -- .syntax--keyword → @purple (#B62D65)
-      hl["@keyword"] = { fg = c.magenta, italic = true } -- 关键字
       -- hl.Keyword                                  = { fg = c.purple, italic = true }
       -- hl["@keyword"]                              = { fg = c.purple, italic = true }
       -- hl["@keyword.return"]                       = { fg = c.purple, italic = true }
@@ -191,36 +193,46 @@ return {
       -- hl.Exception                                = { fg = c.purple }
 
       -- -- ── Operators ──────────────────────────────────────────────────────────
-      hl.Operator = { fg = c.fg }
-      hl["@operator"] = { fg = c.fg }
+      -- -- .syntax--keyword.operator → @color2light
+      -- hl.Operator                                 = { fg = c.blue }
+      -- hl["@operator"]                             = { fg = c.blue }
 
       -- -- ── Types / Classes ────────────────────────────────────────────────────
+      -- -- entity.name.type / support.class → @color1medium (#33CED8)
       hl.Type = { fg = c.color1medium }
       hl["@type"] = { fg = c.color1medium }
       hl["@type.builtin"] = { fg = c.color1dark }
       hl["@type.definition"] = { fg = c.color1medium }
       hl["@constructor"] = { fg = c.color1medium }
       hl.Identifier = { fg = c.color1medium }
-      hl["@property"] = { fg = c.light_gray }
+      hl["@property"] = { fg = c.color1medium }
 
       -- -- ── Variables ──────────────────────────────────────────────────────────
-      hl["@variable"] = { fg = c.light_gray }
-      hl["@variable.member"] = { fg = c.light_gray }
-      hl["@variable.parameter"] = { fg = c.yellow }
-      hl["@variable.builtin"] = { fg = c.red }
+      -- -- .syntax--variable → @light-gray (#718CA1)
+      -- hl["@variable"]                             = { fg = c.light_gray }
+      -- hl["@variable.member"]                      = { fg = c.light_gray }
+      -- -- .syntax--variable.parameter.function → @color4light (yellow)
+      -- hl["@variable.parameter"]                   = { fg = c.yellow }
+      -- -- builtin (self/this) gets red to stand out
+      -- hl["@variable.builtin"]                     = { fg = c.red }
 
       -- -- ── Tags ───────────────────────────────────────────────────────────────
-      hl["@tag"] = { fg = c.color1dark }
-      hl["@tag.attribute"] = { fg = c.color1medium }
-      hl["@tag.delimiter"] = { fg = c.light_gray }
+      -- -- entity.name.tag → @color1dark
+      -- hl["@tag"]                                  = { fg = c.color1dark }
+      -- -- entity.other.attribute-name → @color1medium
+      -- hl["@tag.attribute"]                        = { fg = c.color1medium }
+      -- hl["@tag.delimiter"]                        = { fg = c.color2medium }
 
       -- -- ── Punctuation ────────────────────────────────────────────────────────
-      hl["@punctuation.bracket"] = { fg = c.color2medium }
-      hl["@punctuation.delimiter"] = { fg = c.color2medium }
-      hl["@punctuation.special"] = { fg = c.color2medium }
-      hl.Delimiter = { fg = c.color2medium }
+      -- -- punctuation.definition.string/variable/parameters/array → @color2medium
+      -- hl["@punctuation.bracket"]                  = { fg = c.color2medium }
+      -- hl["@punctuation.delimiter"]                = { fg = c.color2medium }
+      -- -- punctuation.section.embedded → @color2medium
+      -- hl["@punctuation.special"]                  = { fg = c.color2medium }
+      -- hl.Delimiter                                = { fg = c.color2medium }
 
       -- ── Module / Include ───────────────────────────────────────────────────
+      -- meta.require → @blue
       hl["@module"] = { fg = c.blue }
       hl.Include = { fg = c.blue }
       hl.PreProc = { fg = c.cyan }
@@ -234,7 +246,8 @@ return {
       hl["@markup.list.markdown"] = { bold = true, fg = c.color2light }
       hl["@markup.link"] = { fg = c.color1light }
       hl["@markup.link.url"] = { fg = c.light_gray }
-      hl["@markup.link.markdown_inline"] = { fg = c.light_gray }
+      hl["@markup.link.markdown_inline"] = { fg = c.color2 }
+      hl["@markup.raw.markdown_inline"] = { bg = "NONE", fg = c.blue }
       hl["@markup.heading"] = { bold = true, fg = c.blue }
       hl["@markup.heading.1.markdown"] = { bg = "#1A2230", bold = true, fg = c.blue }
       hl["@markup.heading.2.markdown"] = { bg = "#231D1A", bold = true, fg = c.color1light }
@@ -242,7 +255,6 @@ return {
       hl["@markup.heading.4.markdown"] = { bg = "#152026", bold = true, fg = c.color1dark }
       hl["@markup.heading.5.markdown"] = { bg = "#201520", bold = true, fg = c.color2light }
       hl["@markup.heading.6.markdown"] = { bg = "#1E1520", bold = true, fg = c.color2medium }
-      hl["@markup.raw.markdown_inline"] = { bold = true, fg = c.gray }
 
       -- -- ── Editor UI ──────────────────────────────────────────────────────────
       -- -- Normal
@@ -272,8 +284,7 @@ return {
       hl.LineNr = { fg = c.gray }
       hl.LineNrAbove = { fg = c.gray }
       hl.LineNrBelow = { fg = c.gray }
-      -- hl.CursorLineNr = { bold = true, fg = c.light_gray }
-      hl.CursorLineNr = { fg = "#5ec4ff", bold = true }
+      hl.CursorLineNr = { bold = true, fg = c.light_gray }
       hl.FoldColumn = { bg = c.bg, fg = c.light_gray }
       hl.Folded = { bg = c.dark_gray, fg = c.light_gray }
       -- hl.SignColumn = { bg = c.bg, fg = c.gray }
@@ -379,6 +390,7 @@ return {
       hl.TabLine = { bg = "none" }
       hl.TabLineFill = { bg = "none" }
       hl.StatusLine = { bg = "none" }
+      -- hl.WinBar = { bg = c.very_dark_gray }
       hl.WinBar = { bg = c.dark_gray }
       hl.WinBarNC = { bg = "none" }
 
@@ -393,20 +405,9 @@ return {
       hl.TroubleNormal = { bg = "none" }
       hl.TroubleNormalNC = { bg = "none" }
       hl.TroubleCount = { fg = c.cyan, bg = "none" }
+
+      -- hl.TroubleStatusline0 = { bg = "none" }
+      -- hl.TroubleStatusline1 = { bg = "none" }
     end,
   },
-  config = function(_, opts)
-    -- 应用初始配置
-    require("tokyonight").setup(opts)
-    vim.cmd("colorscheme tokyonight")
-
-    -- 切换透明的函数
-    local transparent = opts.transparent
-    vim.keymap.set("n", "<leader>ut", function()
-      transparent = not transparent
-      require("tokyonight").setup(vim.tbl_extend("force", opts, { transparent = transparent }))
-      vim.cmd("colorscheme tokyonight")
-      vim.notify("透明模式: " .. (transparent and "开" or "关"), vim.log.levels.INFO)
-    end, { desc = "Toggle Transparency" })
-  end,
 }
