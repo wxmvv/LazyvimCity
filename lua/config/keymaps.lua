@@ -5,6 +5,10 @@
 
 local map = vim.keymap.set
 
+-- 覆盖窗口代理中的高度调整快捷键。
+map("n", "<leader>w+", "<Nop>", { desc = "which_key_ignore" })
+map("n", "<leader>w-", "<C-W>s", { desc = "Split Window Below", remap = true })
+
 -- 覆盖 LazyVim 的窗口高度调整映射，交给 vim-visual-multi 添加光标。
 map("n", "<C-Down>", "<Plug>(VM-Add-Cursor-Down)", { remap = true, desc = "Add Cursor Down" })
 map("n", "<C-Up>", "<Plug>(VM-Add-Cursor-Up)", { remap = true, desc = "Add Cursor Up" })

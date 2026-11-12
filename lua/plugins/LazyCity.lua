@@ -347,15 +347,22 @@ return {
     },
     keys = function()
       local keys = {}
-      for i = 0, 9 do
+      for i = 1, 9 do
         table.insert(keys, {
-          "<leader>b" .. (i - 1),
+          "<leader>b" .. i,
           function()
             require("bufferline").go_to(i, true)
           end,
-          desc = "跳到 Buffer " .. (i - 1),
+          desc = "跳到 Buffer " .. i,
         })
       end
+      table.insert(keys, {
+        "<leader>b0",
+        function()
+          require("bufferline").go_to(-1, true)
+        end,
+        desc = "跳到最后一个 Buffer",
+      })
       return keys
     end,
   },
